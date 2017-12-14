@@ -1,7 +1,7 @@
-#include"KMeans.h"
 #include<vector>
 #include<cmath>
 using namespace std;
+#include"KMeans.h"
 
 aroyaKMeans::aroyaKMeans() {
 	//nothing to do yet
@@ -20,7 +20,7 @@ void aroyaKMeans::setData(const vector<vector<double>>&yourData) {
 	dataDimension = data[0].size();
 }
 
-void aroyaKMeans::cluster() {
+void aroyaKMeans::run() {
 	int i, j;
 	//设置初始聚类点
 	for (i = 0; i < clusters; i++) {

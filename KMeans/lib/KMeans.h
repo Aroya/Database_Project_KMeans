@@ -6,7 +6,7 @@ public:
 	aroyaKMeans();
 	void setClusters(const int&clusters);
 	void setData(const vector<vector<double>>&yourData);
-	void cluster();
+	void run();
 private:
 	vector<vector<double>>data;
 	vector<int>cluster;

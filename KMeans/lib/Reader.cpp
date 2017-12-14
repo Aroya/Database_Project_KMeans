@@ -1,5 +1,3 @@
-#include"Reader.h"
-
 #include<string>
 #include<vector>
 #include<fstream>
@@ -7,6 +5,7 @@
 #include<sstream>
 
 using namespace std;
+#include"Reader.h"
 
 aroyaReader::aroyaReader() {
 	//nothing to do yet
