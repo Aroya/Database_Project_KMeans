@@ -1,10 +1,13 @@
 #ifndef Aroya_KMEANS
 #define Aroya_KMEANS
 
+#include<iostream>
 #include<vector>
 #include<cmath>
 #include<fstream>
 using namespace std;
+
+#define AROYA_DEBUG
 
 class AroyaKMeans {
 public:

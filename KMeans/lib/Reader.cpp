@@ -46,6 +46,7 @@ string AroyaReader::getStringData(const char&rows, const char&columns) {
 }
 
 double AroyaReader::getDoubleData(const char&rows, const char&columns) {
+	internalSst.str("");
 	internalSst.clear();
 	internalSst << data[rows][columns];
 	double temp;

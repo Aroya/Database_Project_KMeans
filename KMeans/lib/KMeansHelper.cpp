@@ -17,7 +17,7 @@ void AroyaKMeansHelper::insert(AroyaReader&reader, const char*tableName, const c
 		table.push_back(myTableName);		//new table
 	}
 
-	for (int i = 0; i < length; i++) {		//push to buffer
+	for (int i = 1; i < length; i++) {		//push to buffer
 		buffer[myPosition].push_back(reader.getDoubleData(i, t));
 	}
 }
@@ -31,5 +31,17 @@ int AroyaKMeansHelper::findTable(const char*tableName) {
 }
 
 vector<vector<double>> AroyaKMeansHelper::getData() {
-	return buffer;
+	vector<vector<double>>temp;
+	vector<double>item;
+	int i, j, rows, columns;
+	rows = buffer[0].size();
+	columns = buffer.size();
+	for (i = 0; i < rows; i++) {
+		item.clear();
+		for (j = 0; j < columns; j++) {
+			item.push_back(buffer[j][i]);
+		}
+		temp.push_back(item);
+	}
+	return temp;
 }

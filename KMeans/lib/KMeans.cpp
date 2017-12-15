@@ -35,9 +35,14 @@ void AroyaKMeans::run() {
 
 	double *thisCluster = new double[clusters];
 
+	for (i = 0; i < rows; i++) {
+		cluster[i] = -1;
+	}
+
+
 	//开始聚类
 	//小于bord的点变化则收敛
-	while (double(changed) / double(rows) < bord) {
+	while (double(changed) / double(rows) > bord) {
 		changed = 0;
 
 		//初始化空间
@@ -56,6 +61,16 @@ void AroyaKMeans::run() {
 				}
 			}
 		}
+#ifdef AROYA_DEBUG
+		cout << "distance:\n";
+		for (i = 0; i < clusters; i++) {
+			cout << "cluster:" << i << endl;
+			for (j = 0; j < rows; j++) {
+				cout << "point " << j << "\t\t" << distance[i][j] << endl;
+			}
+		}
+		system("pause");
+#endif
 
 		//清除聚类点
 		for (i = 0; i < clusters; i++) {
@@ -66,7 +81,6 @@ void AroyaKMeans::run() {
 
 		//寻找最短路径 并记录
 		for (i = 0; i < rows; i++) {
-			cluster[i] = 0;
 			min = distance[0][i];
 			k = 0;
 			for (j = 1; j < clusters; j++) {
@@ -78,10 +92,19 @@ void AroyaKMeans::run() {
 			if (cluster[i] != k)changed++;
 			cluster[i] = k;
 			for (j = 0; j < columns; j++) {
-				centre[k][j] += centre[i][j];
+				centre[k][j] += data[i][j];
 			}
 			thisCluster[k]++;
 		}
+
+#ifdef AROYA_DEBUG
+		cout << "point to cluster:\n";
+		for (i = 0; i < rows; i++) {
+			cout << "point " << i << "\t\t" << cluster[i] << endl;
+		}
+		cout << "Changed points:" << "\t" << changed << endl;
+		system("pause");
+#endif
 
 		//得到新质心
 		for (i = 0; i < clusters; i++) {
@@ -90,6 +113,18 @@ void AroyaKMeans::run() {
 				centre[i][j] /= k;
 			}
 		}
+#ifdef AROYA_DEBUG
+		cout << "centre:\n";
+		for (i = 0; i < clusters; i++) {
+			cout << "centre " << i;
+			for (j = 0; j < columns; j++) {
+				cout << "\t" << centre[i][j];
+			}
+			cout << endl;
+		}
+		cout << endl;
+		system("pause");
+#endif
 	}
 
 	//清除空间
