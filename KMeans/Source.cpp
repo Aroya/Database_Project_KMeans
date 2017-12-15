@@ -18,7 +18,7 @@ int main() {
 	KMeans.setClusters(2);
 	KMeans.setData(KMeansHelper.getData());
 	KMeans.run();
-	KMeans.writeFile("example.csv");
+	KMeans.writeFile("output.csv");
 
 	system("pause");
 	return 0;

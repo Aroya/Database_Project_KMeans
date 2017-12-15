@@ -7,7 +7,7 @@
 #include<fstream>
 using namespace std;
 
-#define AROYA_DEBUG
+//#define AROYA_DEBUG
 
 class AroyaKMeans {
 public:
