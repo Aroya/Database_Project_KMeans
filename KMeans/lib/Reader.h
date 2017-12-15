@@ -4,7 +4,7 @@
 class aroyaReader {
 private:
 	vector<vector<string>>data;		//全部以string暂存
-	stringstream internalSst;	//转换使用
+	stringstream internalSst;		//转换使用
 public:
 	aroyaReader();
 	void read(const char*fileName);

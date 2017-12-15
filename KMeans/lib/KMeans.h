@@ -4,15 +4,18 @@
 class aroyaKMeans {
 public:
 	aroyaKMeans();
-	void setClusters(const int&clusters);
-	void setData(const vector<vector<double>>&yourData);
-	void run();
+	void setClusters(const int&clusters);					//设置聚类点数
+	void setData(const vector<vector<double>>&yourData);	//从reader读入信息
+	void run();												//进行聚类
+	void setBord(const double&newBord);						//设置收敛条件
+	void writeFile(const char*fileName);										//聚类情况写出文件
 private:
-	vector<vector<double>>data;
-	vector<int>cluster;
-	vector<vector<double>>centre;
-	double **distance;
+	vector<vector<double>>data;		//data
+	int*cluster;					//指明data所在的centre
+	vector<vector<double>>centre;	//质心
+	double **distance;				//data到质心的距离
 	int dataLength, dataDimension, clusters;
+	double bord;					//默认5%以下的变化时已收敛
 };
 
 

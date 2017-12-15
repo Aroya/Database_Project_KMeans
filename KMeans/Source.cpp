@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	aroyaReader reader;
-	reader.read("data\Bike-NYC");
+	reader.read("example\test.csv");
 
 
 
