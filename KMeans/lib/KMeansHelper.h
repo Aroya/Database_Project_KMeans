@@ -8,8 +8,7 @@ using namespace std;
 class AroyaKMeansHelper {
 public:
 	AroyaKMeansHelper();
-	//new column
-	//insert to an exist table
+	//insert table
 	//if not input myTableName, will set it as same as tableName
 	void insert(AroyaReader&reader, const char*tableName, const char*myTableName=nullptr);
 	//for AroyaKMeans to load
