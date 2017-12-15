@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/KMeans/x64/Debug
+/KMeans/x64/Debug
+/KMeans/x64/Debug
+/x64/Debug
+/x64/Debug
+*.exe
+*.ilk
+*.pdb
+/x64/Debug/KMeans.ilk

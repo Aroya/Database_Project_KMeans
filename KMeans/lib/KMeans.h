@@ -1,9 +1,14 @@
-#ifndef AROYA_KMEANS
-#define AROYA_KMEANS
+#ifndef Aroya_KMEANS
+#define Aroya_KMEANS
 
-class aroyaKMeans {
+#include<vector>
+#include<cmath>
+#include<fstream>
+using namespace std;
+
+class AroyaKMeans {
 public:
-	aroyaKMeans();
+	AroyaKMeans();
 	void setClusters(const int&clusters);					//设置聚类点数
 	void setData(const vector<vector<double>>&yourData);	//从reader读入信息
 	void run();												//进行聚类
@@ -14,7 +19,7 @@ private:
 	int*cluster;					//指明data所在的centre
 	vector<vector<double>>centre;	//质心
 	double **distance;				//data到质心的距离
-	int dataLength, dataDimension, clusters;
+	int rows, columns, clusters;
 	double bord;					//默认5%以下的变化时已收敛
 };
 

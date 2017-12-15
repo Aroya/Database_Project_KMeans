@@ -1,21 +1,14 @@
-#include<string>
-#include<vector>
-#include<fstream>
-#include<iostream>
-#include<sstream>
-
-using namespace std;
 #include"Reader.h"
 
-aroyaReader::aroyaReader() {
+AroyaReader::AroyaReader() {
 	//nothing to do yet
 }
 
-void aroyaReader::read(const char*fileName) {
+void AroyaReader::read(const char*fileName) {
 	ifstream fin;
 	fin.open(fileName);
 	if (!fin.is_open()) {
-		cout << "aroyaReader:read() cannot open file!\n";
+		cout << "AroyaReader:read() cannot open file!\n";
 		system("pause");
 	}
 	char reading;
@@ -44,13 +37,15 @@ void aroyaReader::read(const char*fileName) {
 		}
 	}
 	fin.close();
+	rows = data.size();
+	columns = data[0].size();
 }
 
-string aroyaReader::getStringData(const char&rows, const char&columns) {
+string AroyaReader::getStringData(const char&rows, const char&columns) {
 	return data[rows][columns];
 }
 
-double aroyaReader::getDoubleData(const char&rows, const char&columns) {
+double AroyaReader::getDoubleData(const char&rows, const char&columns) {
 	internalSst.clear();
 	internalSst << data[rows][columns];
 	double temp;
@@ -58,10 +53,12 @@ double aroyaReader::getDoubleData(const char&rows, const char&columns) {
 	return temp;
 }
 
-int aroyaReader::findTable(const char*tableName) {
+int AroyaReader::findTable(const char*tableName) {
 	int tables = data[0].size();
 	for (int i = 0; i < tables; i++) {
 		if (data[0][i] == tableName)return i;
 	}
 	return -1;
 }
+int AroyaReader::getRows() { return rows; }
+int AroyaReader::getColumns() { return columns; }

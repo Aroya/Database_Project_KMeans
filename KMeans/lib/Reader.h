@@ -1,17 +1,26 @@
-#ifndef	AROYA_READER
-#define AROYA_READER
+#ifndef	Aroya_READER
+#define Aroya_READER
+#include<string>
+#include<vector>
+#include<fstream>
+#include<iostream>
+#include<sstream>
 
-class aroyaReader {
+using namespace std;
+
+class AroyaReader {
 private:
 	vector<vector<string>>data;		//全部以string暂存
 	stringstream internalSst;		//转换使用
+	int rows, columns;
 public:
-	aroyaReader();
+	AroyaReader();
 	void read(const char*fileName);
 	string getStringData(const char&rows, const char&columns);
 	double getDoubleData(const char&rows, const char&columns);
 	int findTable(const char*tableName);
-
+	int getRows();
+	int getColumns();
 };
 
 #endif
