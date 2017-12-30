@@ -16,7 +16,6 @@ void AroyaKMeansHelper::insert(AroyaReader&reader, const char*tableName, const c
 		buffer.push_back(empty);			//new buffer
 		table.push_back(myTableName);		//new table
 	}
-
 	for (int i = 1; i < length; i++) {		//push to buffer
 		buffer[myPosition].push_back(reader.getDoubleData(i, t));
 	}

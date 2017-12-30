@@ -16,7 +16,11 @@ public:
 	void setData(const vector<vector<double>>&yourData);	//从reader读入信息
 	void run();												//进行聚类
 	void setBord(const double&newBord);						//设置收敛条件
-	void writeFile(const char*fileName);										//聚类情况写出文件
+	void writeFile(const char*fileName);					//聚类情况写出文件
+
+	//质心:一行为一个数据;列为维度
+	vector<vector<double>> getCentre();						//获取质心
+	void writeCentre(const char*fileName);					//质心信息写出文件
 private:
 	vector<vector<double>>data;		//data
 	int*cluster;					//指明data所在的centre

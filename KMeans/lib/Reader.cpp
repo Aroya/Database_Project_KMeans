@@ -41,11 +41,11 @@ void AroyaReader::read(const char*fileName) {
 	columns = data[0].size();
 }
 
-string AroyaReader::getStringData(const char&rows, const char&columns) {
+string AroyaReader::getStringData(const int&rows, const int&columns) {
 	return data[rows][columns];
 }
 
-double AroyaReader::getDoubleData(const char&rows, const char&columns) {
+double AroyaReader::getDoubleData(const int&rows, const int&columns) {
 	internalSst.str("");
 	internalSst.clear();
 	internalSst << data[rows][columns];

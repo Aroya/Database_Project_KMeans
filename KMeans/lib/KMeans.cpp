@@ -144,3 +144,20 @@ void AroyaKMeans::writeFile(const char*fileName) {
 	}
 	fout.close();
 }
+
+vector<vector<double>> AroyaKMeans::getCentre() {
+	return centre;
+}
+void AroyaKMeans::writeCentre(const char*fileName) {
+	ofstream fout;
+	fout.open(fileName);
+	int i, j, centres = centre.size();
+	for (i = 0; i < centres; i++) {
+		fout << centre[i][0];
+		for (j = 1; j < columns; j++) {
+			fout << ',' << centre[i][j];
+		}
+		fout << endl;
+	}
+	fout.close();
+}

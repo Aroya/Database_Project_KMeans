@@ -16,8 +16,8 @@ private:
 public:
 	AroyaReader();
 	void read(const char*fileName);
-	string getStringData(const char&rows, const char&columns);
-	double getDoubleData(const char&rows, const char&columns);
+	string getStringData(const int&rows, const int&columns);
+	double getDoubleData(const int&rows, const int&columns);
 	int findTable(const char*tableName);
 	int getRows();
 	int getColumns();
