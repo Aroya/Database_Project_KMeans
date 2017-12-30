@@ -1,5 +1,3 @@
-
-
 #include"lib\Reader.h"
 #include"lib\KMeansHelper.h"
 #include"lib\KMeans.h"
