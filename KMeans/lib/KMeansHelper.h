@@ -3,9 +3,10 @@
 
 #include<vector>
 #include"Reader.h"
+#include"ReaderHelper.h"
 using namespace std;
 
-class AroyaKMeansHelper {
+class AroyaKMeansHelper : public AroyaReaderHelper{
 public:
 	AroyaKMeansHelper();
 	//insert table

@@ -1,5 +1,9 @@
 #include"Reader.h"
 
+//仅依据不包含数字、小数点来判断
+bool static NotPureNumber(const string&);
+bool static PureNumber(const char&);
+
 AroyaReader::AroyaReader() {
 	//nothing to do yet
 }
@@ -18,7 +22,7 @@ void AroyaReader::read(const char*fileName) {
 	int nowPoint = 0;
 	while (fin.good() && (reading = fin.get()) != -1) {
 		//数据结束 处理数据
-		if (reading == ','|| reading == '\n') {
+		if (reading == ',' || reading == '\n') {
 			if (didntInit) {					//init this row
 				data.push_back(emptyVector);
 				didntInit = false;
@@ -27,7 +31,7 @@ void AroyaReader::read(const char*fileName) {
 
 			buffer.clear();						//clear buffer
 			if (reading == '\n') {				//next row
-				nowPoint++;	
+				nowPoint++;
 				didntInit = true;
 			}
 		}
@@ -37,8 +41,10 @@ void AroyaReader::read(const char*fileName) {
 		}
 	}
 	fin.close();
-	rows = data.size();
-	columns = data[0].size();
+}
+
+void AroyaReader::clear() {
+	data.clear();
 }
 
 string AroyaReader::getStringData(const int&rows, const int&columns) {
@@ -59,7 +65,49 @@ int AroyaReader::findTable(const char*tableName) {
 	for (int i = 0; i < tables; i++) {
 		if (data[0][i] == tableName)return i;
 	}
+	cout << "Cannot find " << tableName << endl;
 	return -1;
 }
-int AroyaReader::getRows() { return rows; }
-int AroyaReader::getColumns() { return columns; }
+int AroyaReader::getRows() { return data.size(); }
+int AroyaReader::getColumns() { return data[0].size(); }
+
+bool static NotPureNumber(const string&str) {
+	int i, l = str.length();
+	char left = '0' - 1, right = '9' + 1;
+	bool point = true;
+	for (i = 0; i < l; i++) {
+		if (point&& str[i] > left &&str[i] < right) {
+			if (str[i] == ',')point = false;
+		}
+		else return true;
+	}
+	return false;
+}
+bool static PureNumber(const char&t) {
+	return t >= '0'&&t <= '9';
+}
+
+void AroyaReader::setTableName(const char*origin, const char*new_) {
+	data[0][findTable(origin)] = new_;
+}
+void AroyaReader::deleteColumn(const int&col) {
+	int rows = getRows();
+	for (int i = 0; i < rows; i++) {
+		data[i].erase(data[i].begin() + col);
+	}
+}
+void AroyaReader::deleteRow(const int&row) {
+	data.erase(data.begin() + row);
+}
+
+void AroyaReader::deleteRows(const char*TableName, const char*DataType) {
+	int column = findTable(TableName);
+	int i, j = getRows();
+	for (i = 1; i < j; i++) {
+		if (data[i][column] == DataType) {
+			deleteRow(i);
+			i--;
+			j = getRows();
+		}
+	}
+}

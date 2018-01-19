@@ -114,12 +114,14 @@
     <ClCompile Include="lib\KMeans.cpp" />
     <ClCompile Include="lib\KMeansHelper.cpp" />
     <ClCompile Include="lib\Reader.cpp" />
+    <ClCompile Include="lib\ReaderHelper.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\KMeans.h" />
     <ClInclude Include="lib\KMeansHelper.h" />
     <ClInclude Include="lib\Reader.h" />
+    <ClInclude Include="lib\ReaderHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
