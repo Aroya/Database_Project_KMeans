@@ -291,3 +291,17 @@ void AroyaReaderHelper::transformTable(const char*fileName) {
 		printf("AroyaReaderHelper::transformTable() cannot open %s\n", fileName);
 	}
 }
+void AroyaReaderHelper::clear() {
+	buffer.clear();
+	table.clear();
+}
+
+bool AroyaReaderHelper::erase(const char*tableName) {
+	int t = findTable(tableName);
+	if (t == -1) {
+		return false;
+	}
+	table.erase(table.begin() + t);
+	buffer.erase(buffer.begin() + t);
+	return true;
+}

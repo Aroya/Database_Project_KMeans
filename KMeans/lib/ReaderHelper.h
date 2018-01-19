@@ -9,12 +9,15 @@ using namespace std;
 class AroyaReaderHelper {
 public:
 	AroyaReaderHelper();
+	//clear reader
+	void clear();
 	//insert table
-	
 	//if not input myTableName, will set it as same as tableName
 	void insert(AroyaReader&reader, const char*tableName, const char*myTableName=nullptr);
 	//insert by column position
 	void insert(AroyaReader&reader, const int&col);
+	//delete table
+	bool erase(const char*tableName);
 	
 	//归一化
 	void normalization();
@@ -25,6 +28,7 @@ public:
 	int getRows();
 	int getColumns();
 
+	//读取不带table
 	//默认0行优先读取
 	//1为列优先读取
 	vector<vector<double>> getData(int dataType=0);
